@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.github.emays</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.10-SNAPSHOT</version>
+		<relativePath />
+	</parent>
+
+	<artifactId>timezone-boundary</artifactId>
+	<!--Update timezone-boundary.version in properties to this major version-->
+	<version>2025b.0.1-SNAPSHOT</version>
+
+	<name>Time Zone Boundary</name>
+	<description>Packages time zone boundary data as Maven artifacts</description>
+	<url>https://github.com/emays/timezone-boundary-build</url>
+	<inceptionYear>2026</inceptionYear>
+	<organization>
+		<name>Mays Systems LLC</name>
+	</organization>
+	<licenses>
+		<license>
+			<name>Apache-2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Eric Mays</name>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://www.github.com/emays/timezone-boundary</connection>
+		<developerConnection>
+			scm:git:https://www.github.com/emays/timezone-boundary</developerConnection>
+		<url>https://www.github.com/emays/timezone-boundary</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<properties>
+		<timezone-boundary.version>2025b</timezone-boundary.version>
+	</properties>
+
+	<dependencies>
+		<!-- test dependencies -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- logging dependencies -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>download-tz</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>download-single</goal>
+						</goals>
+						<configuration>
+							<!--https://github.com/evansiroky/timezone-boundary-builder/releases/download/2025c/timezones-with-oceans-now.geojson.zip-->
+							<url>
+								https://github.com/evansiroky/timezone-boundary-builder/releases/download/${timezone-boundary.version}</url>
+							<fromFile>timezones-with-oceans-now.geojson.zip</fromFile>
+							<toDir>${project.build.outputDirectory}</toDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>github-repo</id>
+			<repositories>
+				<repository>
+					<id>github-parent</id>
+					<url>https://maven.pkg.github.com/emays/parent</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
+</project>
