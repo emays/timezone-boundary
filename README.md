@@ -61,7 +61,7 @@ Use this packaged file in another project by unpacking with the Maven dependency
 							<version>2025b.0.1-SNAPSHOT</version>
 						</artifactItem>
 					</artifactItems>
-					<outputDirectory>	${project.basedir}/src/test/resources/timezone</outputDirectory>
+					<outputDirectory>${project.basedir}/src/test/resources/timezone</outputDirectory>
 				</configuration>
 			</execution>
 		</executions>
