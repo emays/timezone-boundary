@@ -15,7 +15,7 @@
 
 	<name>Time Zone Boundary</name>
 	<description>Packages time zone boundary data as Maven artifacts</description>
-	<url>https://github.com/emays/timezone-boundary-build</url>
+	<url>https://github.com/emays/timezone-boundary</url>
 	<inceptionYear>2026</inceptionYear>
 	<organization>
 		<name>Mays Systems LLC</name>
@@ -90,6 +90,16 @@
 	</build>
 
 	<profiles>
+		<profile>
+			<id>github-packages</id>
+			<distributionManagement>
+				<repository>
+					<id>github</id>
+					<name>GitHub Packages</name>
+					<url>https://maven.pkg.github.com/emays/timezone-boundary</url>
+				</repository>
+			</distributionManagement>
+		</profile>
 		<profile>
 			<id>github-repo</id>
 			<repositories>
