@@ -11,7 +11,7 @@
 
 	<artifactId>timezone-boundary</artifactId>
 	<!--Update timezone-boundary.version in properties to this major version-->
-	<version>2025b.0.1-SNAPSHOT</version>
+	<version>2025b.0.1</version>
 
 	<name>Time Zone Boundary</name>
 	<description>Packages time zone boundary data as Maven artifacts</description>
@@ -38,7 +38,7 @@
 		<developerConnection>
 			scm:git:https://www.github.com/emays/timezone-boundary</developerConnection>
 		<url>https://www.github.com/emays/timezone-boundary</url>
-		<tag>HEAD</tag>
+		<tag>timezone-boundary-2025b.0.1</tag>
 	</scm>
 
 	<properties>
