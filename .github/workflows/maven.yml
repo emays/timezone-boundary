@@ -22,7 +22,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Maven Settings File
-      uses: step-security/maven-settings-xml-action@v22
+      uses: s4u/maven-settings-xml-action@v22
       with:
         servers: '[{"id": "github-parent", "username": "emays", "password": "${{secrets.READ_PACKAGES_TOKEN}}"}]'
     - name: Build with Maven
